@@ -34,7 +34,7 @@ extra-source-files: changelog.md
 
 source-repository head
   type:     git
-  location: git://github.com/haskell/aeson.git
+  location: https://github.com/haskell/aeson.git
   subdir:   text-iso8601
 
 library

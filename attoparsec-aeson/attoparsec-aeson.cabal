@@ -56,5 +56,5 @@ library
 
 source-repository head
   type:     git
-  location: git://github.com/haskell/aeson.git
+  location: https://github.com/haskell/aeson.git
   subdir:   attoparsec-aeson
