@@ -28,6 +28,11 @@ import qualified Network.URI as URI
 import Data.Orphans ()
 import Test.QuickCheck.Instances ()
 
+#if !MIN_VERSION_base(4,16,0)
+import Data.Semigroup (Option (..))
+import Data.Tuple.Solo (Solo (..))
+#endif
+
 -- "System" types.
 
 instance Arbitrary DotNetTime where
@@ -157,9 +162,13 @@ instance Arbitrary (GADT String) where
 
 #if !MIN_VERSION_base(4,16,0)
 instance Arbitrary OptionField where
-    arbitrary = OptionField <$> arbitrary
+    arbitrary = OptionField . Option <$> arbitrary
 #endif
 
+#if !MIN_VERSION_base(4,16,0) && MIN_VERSION_QuickCheck(2,17,0)
+instance Arbitrary a => Arbitrary (Solo a) where
+    arbitrary = MkSolo <$> arbitrary
+#endif
 
 instance ApproxEq Char where
     (=~) = (==)
