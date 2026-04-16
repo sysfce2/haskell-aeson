@@ -12,7 +12,8 @@ tested-with:
    || ==9.6.6
    || ==9.8.4
    || ==9.10.1
-   || ==9.12.1
+   || ==9.12.4
+   || ==9.14.1
 
 flag tasty-bench
   description: Use tasty-bench, otherwise criterion
@@ -49,7 +50,6 @@ executable aeson-bench
 
   build-depends:
       aeson
-    , attoparsec
     , attoparsec-aeson
     , base
     , base-compat-batteries
@@ -61,9 +61,7 @@ executable aeson-bench
     , filepath
     , hashable
     , json
-    , scientific
     , tagged
-    , template-haskell
     , text
     , time
     , unordered-containers

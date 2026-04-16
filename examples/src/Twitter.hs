@@ -10,7 +10,6 @@
 
 {-# LANGUAGE DeriveDataTypeable #-}
 {-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE NoImplicitPrelude #-}
 
 module Twitter
     (
@@ -19,8 +18,6 @@ module Twitter
     , Story(..)
     , Result(..)
     ) where
-
-import Prelude.Compat
 
 import Control.DeepSeq
 import Data.Data (Typeable, Data)

@@ -1,7 +1,5 @@
 -- Use GHC generics to automatically generate good instances.
 
-{-# LANGUAGE NoImplicitPrelude #-}
-
 {-# OPTIONS_GHC -fno-warn-orphans #-}
 
 module Twitter.Generic
@@ -11,8 +9,6 @@ module Twitter.Generic
     , Story(..)
     , Result(..)
     ) where
-
-import Prelude.Compat ()
 
 import Twitter
 import Twitter.Options

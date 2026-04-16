@@ -1,4 +1,3 @@
-{-# LANGUAGE NoImplicitPrelude #-}
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE RecordWildCards   #-}
 -- From github package: https://hackage.haskell.org/package/github
@@ -34,8 +33,6 @@
 -- OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 --
 module GitHub where
-
-import           Prelude.Compat
 
 import           Control.DeepSeq (NFData (..))
 import           Data.Text       (Text)

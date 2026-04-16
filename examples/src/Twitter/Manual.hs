@@ -1,5 +1,4 @@
 -- Manually write instances.
-{-# LANGUAGE NoImplicitPrelude #-}
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE RecordWildCards #-}
 
@@ -12,8 +11,6 @@ module Twitter.Manual
     , Story(..)
     , Result(..)
     ) where
-
-import Prelude.Compat
 
 import Control.Applicative
 import Twitter
