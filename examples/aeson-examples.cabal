@@ -18,7 +18,8 @@ tested-with:
    || ==9.6.6
    || ==9.8.4
    || ==9.10.1
-   || ==9.12.1
+   || ==9.12.4
+   || ==9.14.1
 
 library twitter-generic
   default-language: Haskell2010
@@ -32,7 +33,6 @@ library twitter-generic
   build-depends:
       aeson
     , base         <5
-    , base-compat
     , deepseq
     , text
 
@@ -48,7 +48,6 @@ library twitter-th
   build-depends:
       aeson
     , base         <5
-    , base-compat
     , deepseq
     , text
 
@@ -63,7 +62,6 @@ library twitter-manual
   build-depends:
       aeson
     , base                   <5
-    , base-compat-batteries
     , deepseq
     , text
 
@@ -75,7 +73,6 @@ library github
   build-depends:
       aeson
     , base                   <5
-    , base-compat-batteries
     , deepseq
     , text
     , time
@@ -89,7 +86,6 @@ executable aeson-example-generic
   build-depends:
       aeson
     , base         <5
-    , base-compat
     , bytestring
 
 executable aeson-example-simplest
@@ -100,7 +96,6 @@ executable aeson-example-simplest
   build-depends:
       aeson
     , base                   <5
-    , base-compat-batteries
     , bytestring
 
 executable aeson-example-th
@@ -111,5 +106,4 @@ executable aeson-example-th
   build-depends:
       aeson
     , base         <5
-    , base-compat
     , bytestring

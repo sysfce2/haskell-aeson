@@ -945,7 +945,7 @@ parseRecord jc tvMap argTys opts tName conName fields obj inTaggedObject =
                           (appE [|show|] (varE unknownFields)))
                       []
               ]
-      x:xs = [ lookupField argTy
+      (x,xs) = nonEmpty [ lookupField argTy
                `appE` dispatchParseJSON jc conName tvMap argTy
                `appE` litE (stringL $ show tName)
                `appE` litE (stringL $ constructorTagModifier opts $ nameBase conName)
@@ -954,6 +954,11 @@ parseRecord jc tvMap argTys opts tName conName fields obj inTaggedObject =
                       )
              | (field, argTy) <- zip fields argTys
              ]
+
+-- A hack, as I'm too lazy to changge code to not assume fields are non empty.
+nonEmpty :: [a] -> (a, [a])
+nonEmpty (x:xs) = (x,xs)
+nonEmpty []     = error "unexpected empty list"
 
 getValField :: Name -> String -> [MatchQ] -> Q Exp
 getValField obj valFieldName matches = do
@@ -1056,12 +1061,12 @@ parseProduct :: JSONClass -- ^ The FromJSON variant being derived.
              -> [Type] -- ^ The argument types of the constructor.
              -> Name -- ^ Name of the type to which the constructor belongs.
              -> Name -- ^ 'Con'structor name.
-             -> Integer -- ^ 'Con'structor arity.
+             -> Integer -- ^ 'Con'structor arity. >= 1
              -> [Q Match]
 parseProduct jc tvMap argTys tName conName numArgs =
     [ do arr <- newName "arr"
          -- List of: "parseJSON (arr `V.unsafeIndex` <IX>)"
-         let x:xs = [ dispatchParseJSON jc conName tvMap argTy
+         let (x,xs) = nonEmpty [ dispatchParseJSON jc conName tvMap argTy
                       `appE`
                       infixApp (varE arr)
                                [|V.unsafeIndex|]
